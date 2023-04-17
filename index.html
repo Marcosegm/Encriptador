@@ -1,124 +1,36 @@
 <!DOCTYPE html>
-
-<html lang="es">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
-        <title>Challenge One</title>  <!--Se define titulo de la página-->
-        <link rel="stylesheet" href="reset.css"> <!--Se importa el archivo reset.css el cual nos permite reducir las inconsistencias del navegador -->
-        <link rel="stylesheet" href="style.css"> <!--Se importa las configuraciones de nuestro styleEncriptador.css-->
-        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-
-    <body>
-        <div class="tamanoPagina"> 
-            <header> 
-                <h1> <img class="logo" src="./imagenes/logo.png" alt="Logo de Alura"> </h1>                 
-            </header>
-        
-            <main>
-                <div class="ladoIzquierdo">
-                    <textarea class="ingresarTexto" id="ingresarTex" placeholder="Ingrese el texto aquí..." rows="12" cols="42" required></textarea>   
-                    <p class="mensajeDeAdvertencia">&#9888; Solo letras minúsculas y sin acentos</p>
-                    <button onclick="encriptar()" id="botEncriptar">Encriptar</button>
-                    <button onclick="desencriptar()" id="botDesencriptar">Desencriptar</button>
-                </div>
-
-                <div class="ladoDerecho">  
-                    <div class="cuadroDeResultado"> 
-                        <img id="muneco" src="./imagenes/muneco.png" alt="Imagen de un muñeco">
-                        <p id="textoCuadro1"> Ningún mensaje fue encontrado </p>  
-                        <p id="textoCuadro2"> "Ingresa el texto que desees encriptar o desencriptar"</p>
-                        <textarea id="CuadroDeTextoResultado"  rows="26" cols="30"></textarea>     
-                        <button onclick="copiar()" id="botCopiar">Copiar</button>
-                    </div>
-                </div>        
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header> 
+        <img class="logo" src="./imagenes/logo.png" alt="Logo de Alura">                
+    </header>
+    <main>
+        <div class="ladoIzquierdo">
+            <textarea class="ingresarTexto" id="ingresarTex" placeholder="Ingrese el texto aquí..."  required></textarea>   
+            <p class="mensajeDeAdvertencia">&#9888; Solo letras minúsculas y sin acentos</p>
+            <button class="btn"  onclick="encriptar()" id="botEncriptar">Encriptar</button>
+            <button class="btn" onclick="desencriptar()" id="botDesencriptar">Desencriptar</button>
         </div>
- 
-        </main>
 
-        <footer class="footerEncriptador">
-            <nav>
-                <ul>
-                    <li><a href="https://www.linkedin.com/in/marcosegm14/" target="_blank"><i class="fa fa-linkedin-square" style="font-size:38px"></i></a></li>
-                    <li><i class="fa fa-telegram" style="font-size:38px"></i></li>
-                    <li><i class="fa fa-whatsapp" style="font-size:38px"></i></li>
-                    <li><a href="https://github.com/Marcosegm" target="_blank"><i class="fa fa-github" style="font-size:38px"></i></li></a>
-                </ul>
-            </nav>
-            <p class="nombre"> By Marcos Guzmán &#9875;</p>  
-        </footer>
-
-    </body>
-
+        <div class="ladoDerecho">  
+            <div class="cuadroDeResultado"> 
+                <img id="muneco" src="./imagenes/muneco.png" alt="Imagen de un muñeco">
+                <p id="textoCuadro1"> Ningún mensaje fue encontrado </p>  
+                <p id="textoCuadro2"> "Ingresa el texto que desees encriptar o desencriptar"</p>
+                <textarea id="CuadroDeTextoResultado"  ></textarea>     
+                <button class="btn" onclick="copiar()" id="botCopiar">Copiar</button>
+            </div>
+        </div>        
+    </main>
+    <script src="./main.js"></script>
+</body>
 </html>
-
-
-
-<!--Comienza programación con JS-->
-
-
-
-<!--Condición para el encriptador 
-La letra "a" es convertida para "ai"
-La letra "e" es convertida para "enter" 
-La letra "i" es convertida para "imes" 
-La letra "o" es convertida para "ober"
-La letra "u" es convertida para "ufat" -->
-
-
- <script>
-
-function encriptar(){
-    var texto = document.getElementById("ingresarTex").value.toLowerCase(); // Se extrae el texto ingresado por el usuario, y se convierte el texto en minúscula"
-    // El parámetro "i" afecta tanto mayúsculas como minúsculas 
-    // El parámetro "g" afecta toda la línea u oración
-    // El parámetro "m" afecta a multiples líneas
-    var txtCifrado = texto.replace(/e/igm,"enter");
-    var txtCifrado = txtCifrado.replace(/o/igm,"ober");
-    var txtCifrado = txtCifrado.replace(/i/igm,"imes");
-    var txtCifrado = txtCifrado.replace(/a/igm,"ai");
-    var txtCifrado = txtCifrado.replace(/u/igm,"ufat");
-
-    document.getElementById("muneco").style.display = "none";
-    document.getElementById("textoCuadro1").style.display = "none";
-    document.getElementById("textoCuadro2").style.display = "none";
-    document.getElementById("CuadroDeTextoResultado").innerHTML = txtCifrado;
-    document.getElementById("botCopiar").style.display = "show";
-    document.getElementById("botCopiar").style.display = "inherit";
-    document.getElementById("CuadroDeTextoResultado").style.display = "show";
-    document.getElementById("CuadroDeTextoResultado").style.display = "inherit";
-}
-
-function desencriptar(){
-    var texto = document.getElementById("ingresarTex").value.toLowerCase(); // Se extrae el texto ingresado por el usuario, y se convierte el texto en minúscula"
-    // El parámetro "i" afecta tanto mayúsculas como minúsculas 
-    // El parámetro "g" afecta toda la línea u oración
-    // El parámetro "m" afecta a multiples líneas
-    var txtCifrado = texto.replace(/enter/igm,"e");
-    var txtCifrado = txtCifrado.replace(/ober/igm,"o");
-    var txtCifrado = txtCifrado.replace(/imes/igm,"i");
-    var txtCifrado = txtCifrado.replace(/ai/igm,"a");
-    var txtCifrado = txtCifrado.replace(/ufat/igm,"u");
-
-    document.getElementById("muneco").style.display = "none";
-    document.getElementById("textoCuadro1").style.display = "none";
-    document.getElementById("textoCuadro2").style.display = "none";
-    document.getElementById("CuadroDeTextoResultado").innerHTML = txtCifrado;
-    document.getElementById("botCopiar").style.display = "show";
-    document.getElementById("botCopiar").style.display = "inherit";
-    document.getElementById("CuadroDeTextoResultado").style.display = "show";
-    document.getElementById("CuadroDeTextoResultado").style.display = "inherit";
-    
-}
-
-function copiar() {
-    var contenido = document.querySelector("#CuadroDeTextoResultado");
-    contenido.select();
-    document.execCommand("copy");
-}
-
-
-</script> 
