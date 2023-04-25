@@ -15,10 +15,14 @@
     </header>
     <main>
         <div class="ladoIzquierdo">
-            <textarea class="ingresarTexto" id="ingresarTex" placeholder="Ingrese el texto aquí..."  required></textarea>   
-            <p class="mensajeDeAdvertencia">&#9888; Solo letras minúsculas y sin acentos</p>
-            <button class="btn"  onclick="encriptar()" id="botEncriptar">Encriptar</button>
-            <button class="btn" onclick="desencriptar()" id="botDesencriptar">Desencriptar</button>
+            <div>
+                <textarea class="ingresarTexto" id="ingresarTex" placeholder="Ingrese el texto aquí..."  required></textarea>   
+                <p class="mensajeDeAdvertencia"><img src="./imagenes/bi_exclamation-circle-fill.svg" alt=""> Solo letras minúsculas y sin acentos</p>
+                <div>
+                    <button class="btn"  onclick="encriptar()" id="botEncriptar">Encriptar</button>
+                    <button class="btn" onclick="desencriptar()" id="botDesencriptar">Desencriptar</button>
+                </div>
+            </div>
         </div>
 
         <div class="ladoDerecho">  
